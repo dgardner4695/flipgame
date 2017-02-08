@@ -10,6 +10,7 @@ class deck
 {
 	public:
 		deck();
+		~deck();
 		friend std::ostream& operator<<(std::ostream& ostr, deck& d);
 		void shuffle();
 	private:

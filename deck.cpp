@@ -18,6 +18,20 @@ deck::deck()
 	}
 }
 
+deck::~deck()
+{
+	if(front != NULL)
+	{
+		node<card> *tempNode = front;
+		while(tempNode != NULL)
+		{
+			node<card> *nextTemp = tempNode->next;
+			delete tempNode;
+			tempNode = nextTemp;
+		}
+	}
+}
+
 std::ostream& operator<< (std::ostream& ostr, deck& d)
 {
 	deck tempNode = d;
@@ -34,7 +48,7 @@ void deck::shuffle()
 	int i=0, j = 0;
 	srand(time(0));
 	node<card> *prev, *curr;
-	while (j < 1000000)
+	while (j < 100000)
 	{
 		prev = NULL;
 		curr = front;
@@ -61,5 +75,4 @@ int main()
 	d.shuffle();
 	std::cout << std::endl << "After Shuffling: " << std::endl;
 	std::cout << d;
-	system("pause");
 }
