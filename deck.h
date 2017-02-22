@@ -10,6 +10,7 @@ class deck
 {
 	public:
 		deck();
+        ~deck();
 		//My partner included a destructor, but it was causing segmentation faults on my computer
 		friend std::ostream& operator<<(std::ostream& ostr, deck& d);
 		void shuffle();

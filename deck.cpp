@@ -27,6 +27,19 @@ deck::deck()
 	}
 }
 
+deck::~deck(){
+    if(front != NULL)
+    {
+        node<card> *tempNode = front;
+        while(tempNode != NULL)
+        {
+            node<card> *nextTemp = tempNode->next;
+            delete tempNode;
+            tempNode = nextTemp;
+        }
+    }
+}
+
 std::ostream& operator<< (std::ostream& ostr, deck& d)
 {
     //std::cout << d.front->next->next->nodeValue.getValue();
@@ -66,7 +79,7 @@ void deck::shuffle()
 
 card deck::deal(){
     if(front != NULL){
-        node *n = front;
+        node<card> *n = front;
         front = n->next; //reset the front of the deck
         return n->nodeValue; //return the card that used to be 'front'
     }
@@ -74,8 +87,8 @@ card deck::deal(){
 
 void deck::replace(card c){
     if(front != NULL){
-        node *temp = front;
-        node *newNode = new node(c, NULL);
+        node<card> *temp = front;
+        node<card> *newNode = new node<card>(c, NULL);
 
         while(temp->next != NULL){
             temp = temp->next; //iterate through the deck
