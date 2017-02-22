@@ -64,6 +64,27 @@ void deck::shuffle()
 	}
 }
 
+card deck::deal(){
+    if(front != NULL){
+        node *n = front;
+        front = n->next; //reset the front of the deck
+        return n->nodeValue; //return the card that used to be 'front'
+    }
+}
+
+void deck::replace(card c){
+    if(front != NULL){
+        node *temp = front;
+        node *newNode = new node(c, NULL);
+
+        while(temp->next != NULL){
+            temp = temp->next; //iterate through the deck
+        }
+
+        temp->next = newNode;  //add card to end of the deck
+    }
+}
+
 int main()
 {
 	deck d;
