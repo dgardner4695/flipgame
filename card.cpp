@@ -11,6 +11,12 @@ card::card(int value, int suit)
 	this->suit = suit;
 }
 
+card::card(const card& c)
+{
+	this->value = c.value;
+	this->suit = c.suit;
+}
+
 int card::getValue()
 {
 	return value;
@@ -35,4 +41,10 @@ std::ostream& operator<< (std::ostream& ostr, card& c)
 {
 	ostr << values[c.getValue()] << " of " << suits[c.getSuit()] << std::endl;
 	return ostr;
+}
+
+void card::operator= (const card& c)
+{
+	this->value = c.value;
+	this->suit = c.suit;
 }

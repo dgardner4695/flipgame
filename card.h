@@ -7,11 +7,13 @@ class card
 {
 	public:
 		card(int value, int suit);
+		card(const card& c);
 		void setValue(int value);
 		void setSuit(int suit);
 		int getValue();
 		int getSuit();
 		friend std::ostream& operator<< (std::ostream& ostr, card& c);
+		void operator= (const card& c);
 	private:
 		int value, suit;
 };
