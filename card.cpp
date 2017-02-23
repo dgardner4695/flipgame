@@ -43,8 +43,9 @@ std::ostream& operator<< (std::ostream& ostr, card& c)
 	return ostr;
 }
 
-void card::operator= (const card& c)
+card& card::operator= (const card& c)
 {
-	this->value = c.value;
-	this->suit = c.suit;
+	value = c.value;
+	suit = c.suit;
+	return  *this;
 }

@@ -13,7 +13,7 @@ class card
 		int getValue();
 		int getSuit();
 		friend std::ostream& operator<< (std::ostream& ostr, card& c);
-		void operator= (const card& c);
+		card& operator= (const card& c);
 	private:
 		int value, suit;
 };
