@@ -9,10 +9,11 @@
 class deck
 {
 	public:
-		deck();
+		deck(bool empty_deck = false);
         ~deck();
 		//My partner included a destructor, but it was causing segmentation faults on my computer
 		friend std::ostream& operator<<(std::ostream& ostr, deck& d);
+		card& getCard(int index);
 		void shuffle();
         card deal();
         void replace(card c);

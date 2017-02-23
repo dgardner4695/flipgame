@@ -5,24 +5,27 @@
 #include "card.h"
 #include "deck.h"
 
-deck::deck()
+deck::deck(bool empty_deck)
 {
-    node<card> *curr = NULL;
-	for (int i = 3; i >= 0; i--)
+	if (!empty_deck)
 	{
-		for (int j = 12; j >= 0; j--)
+		node<card> *curr = NULL;
+		for (int i = 3; i >= 0; i--)
 		{
-			card c(j, i);
-			node<card> *newCard = new node<card>(c, NULL);
-            if(curr == NULL){
-                front = newCard;
-                curr = front;
-            }
-            else{
-                curr->next = newCard;
-                curr = newCard;
-            }
+			for (int j = 12; j >= 0; j--)
+			{
+				card c(j, i);
+				node<card> *newCard = new node<card>(c, NULL);
+				if (curr == NULL) {
+					front = newCard;
+					curr = front;
+				}
+				else {
+					curr->next = newCard;
+					curr = newCard;
+				}
 
+			}
 		}
 	}
 }
@@ -96,15 +99,21 @@ void deck::replace(card c){
 
         temp->next = newNode;  //add card to end of the deck
     }
+	else
+	{
+		node<card> *newNode = new node<card>(c, NULL);
+		front = newNode;
+	}
 }
 
-int main()
-{
-	deck d;
-	std::cout << "Before Shuffling:" << std::endl;
-	std::cout << d;
-	d.shuffle();
-	std::cout << std::endl << "After Shuffling: " << std::endl;
-	std::cout << d;
-    return 0;
+card& deck::getCard(int index) {
+	if (front != NULL) {
+		node<card> *temp = front;
+		int i = 1;
+		while (i < index) {
+			temp = temp->next; //iterate through the deck
+			i++;
+		}
+		return temp->nodeValue;
+	}
 }
