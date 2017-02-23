@@ -7,16 +7,16 @@
 
 deck::deck()
 {
-    node<card> *curr;
+    node<card> *curr = NULL;
 	for (int i = 3; i >= 0; i--)
 	{
 		for (int j = 12; j >= 0; j--)
 		{
 			card c(j, i);
 			node<card> *newCard = new node<card>(c, NULL);
-            if(i == 3 && j == 12){
+            if(curr == NULL){
                 front = newCard;
-                curr = newCard;
+                curr = front;
             }
             else{
                 curr->next = newCard;
