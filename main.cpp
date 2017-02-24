@@ -7,7 +7,7 @@
 using namespace std;
 void playFlip()
 {
-	int choice, score;
+	int choice, score = 0;
 	//node<card> *tempNode;
 	card current_card(0, 0);
 	vector<int> chosen_cards = {};

@@ -12,7 +12,7 @@ deck::deck(bool empty_deck)
 		node<card> *curr = NULL;
 		for (int i = 3; i >= 0; i--)
 		{
-			for (int j = 12; j >= 0; j--)
+			for (int j = 0; j <= 12; j++)
 			{
 				card c(j, i);
 				node<card> *newCard = new node<card>(c, NULL);
@@ -28,6 +28,9 @@ deck::deck(bool empty_deck)
 			}
 		}
 	}
+    else{
+        front = NULL;
+    }
 }
 
 deck::~deck(){
@@ -98,11 +101,13 @@ void deck::replace(card c){
         }
 
         temp->next = newNode;  //add card to end of the deck
+        newNode->next = NULL;
     }
 	else
 	{
 		node<card> *newNode = new node<card>(c, NULL);
 		front = newNode;
+        newNode->next = NULL;
 	}
 }
 
